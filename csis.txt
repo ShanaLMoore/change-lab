@@ -1,11 +1,10 @@
 Bills:
  Twenties: 3 
-    Tens: 1 
-   Fives: 1 
-    Ones: 3 
-
+     Tens: 1 
+    Fives: 1 
+     Ones: 3 
 Coins:
  Quarters: 3 
-   Dimes: 0 
- Nickels: 1 
- Pennies: 3 
+    Dimes: 0 
+  Nickels: 1 
+  Pennies: 3 

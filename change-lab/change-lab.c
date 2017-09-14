@@ -10,16 +10,15 @@
 
 #include <stdio.h>
 
-#define COST_OF_ITEM 21.17
-#define AMOUNT_TENDERED 100.00
-#define TWENTY 20
-#define TEN 10
-#define FIVE 5
-#define ONE 1
-#define QUARTER 25
-#define DIME 10
-#define NICKEL 5
-#define PENNY 1
+#define TWENTY 20  // conversion constant
+#define TEN 10     // conversion constant
+#define FIVE 5     // conversion constant
+#define ONE 1      // conversion constant
+#define QUARTER 25 // conversion constant
+#define DIME 10    // conversion constant
+#define NICKEL 5   // conversion constant
+#define PENNY 1    // conversion constant
+#define CURRENCY_FORMAT "%9s: %d \n"
 
 int main(void) {
     // Declare variables with appropriate data types
@@ -29,8 +28,14 @@ int main(void) {
     ones = 0, quarters = 0, dimes = 0,
     nickels = 0, pennies = 0;
     
+    double cost_of_item, amount_tendered;
+    
     // Perform calculations and assign values to variables
-    change = (AMOUNT_TENDERED - COST_OF_ITEM)*100;
+    
+    cost_of_item = 21.17;
+    amount_tendered = 100.00;
+    
+    change = (int)((amount_tendered - cost_of_item)*100);
     
     twenties = change / (TWENTY * 100);
     change = change % (TWENTY * 100);
@@ -59,37 +64,37 @@ int main(void) {
     // Open file
     fp = fopen("csis.txt", "w");
     
-    /* Display output (weight in lbs) listed by planet and
+    /* Display output listed by quantity of denominations and
      output to file */
-    printf("Bills:\n ");
-    fprintf(fp, "Bills:\n ");
+    printf("Bills:\n");
+    fprintf(fp, "Bills:\n");
     
-    printf("%8s: %d \n", "Twenties", twenties);
-    fprintf(fp, "%8s: %d \n", "Twenties", twenties);
+    printf(CURRENCY_FORMAT, "Twenties", twenties);
+    fprintf(fp, CURRENCY_FORMAT, "Twenties", twenties);
     
-    printf("%8s: %d \n", "Tens", tens);
-    fprintf(fp, "%8s: %d \n", "Tens", tens);
+    printf(CURRENCY_FORMAT, "Tens", tens);
+    fprintf(fp, CURRENCY_FORMAT, "Tens", tens);
     
-    printf("%8s: %d \n", "Fives", fives);
-    fprintf(fp, "%8s: %d \n", "Fives", fives);
+    printf(CURRENCY_FORMAT, "Fives", fives);
+    fprintf(fp, CURRENCY_FORMAT, "Fives", fives);
     
-    printf("%8s: %d \n\n", "Ones", ones);
-    fprintf(fp, "%8s: %d \n\n", "Ones", ones);
+    printf(CURRENCY_FORMAT, "Ones", ones);
+    fprintf(fp, CURRENCY_FORMAT, "Ones", ones);
     
-    printf("Coins:\n ");
-    fprintf(fp, "Coins:\n ");
+    printf("Coins:\n");
+    fprintf(fp, "Coins:\n");
     
-    printf("%8s: %d \n", "Quarters", quarters);
-    fprintf(fp, "%8s: %d \n", "Quarters", quarters);
+    printf(CURRENCY_FORMAT, "Quarters", quarters);
+    fprintf(fp, CURRENCY_FORMAT, "Quarters", quarters);
     
-    printf("%8s: %d \n", "Dimes", dimes);
-    fprintf(fp, "%8s: %d \n", "Dimes", dimes);
+    printf(CURRENCY_FORMAT, "Dimes", dimes);
+    fprintf(fp, CURRENCY_FORMAT, "Dimes", dimes);
     
-    printf("%8s: %d \n", "Nickels", nickels);
-    fprintf(fp, "%8s: %d \n", "Nickels", nickels);
+    printf(CURRENCY_FORMAT, "Nickels", nickels);
+    fprintf(fp, CURRENCY_FORMAT, "Nickels", nickels);
     
-    printf("%8s: %d \n", "Pennies", pennies);
-    fprintf(fp, "%8s: %d \n", "Pennies", pennies);
+    printf(CURRENCY_FORMAT, "Pennies", pennies);
+    fprintf(fp, CURRENCY_FORMAT, "Pennies", pennies);
     
     //Close file
     fclose(fp);
